@@ -74,6 +74,7 @@ backup_and_create $PWD/bin/kill-gpu-process $HOME/bin/kill-gpu-process
 backup_and_create $PWD/bin/delete-untagged-docker-images $HOME/bin/delete-untagged-docker-images
 backup_and_create $PWD/bin/set-polybar-network-device $HOME/bin/set-polybar-network-device
 backup_and_create $PWD/bin/setup-go-project $HOME/bin/setup-go-project
+backup_and_create $PWD/bin/whatsapp $HOME/bin/whatsapp
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
