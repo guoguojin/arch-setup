@@ -67,6 +67,7 @@ yay -S --noconfirm --needed arandr
 yay -S --noconfirm --needed solaar
 yay -S --noconfirm --needed picom
 yay -S --noconfirm --needed alacritty
+yay -S --noconfirm --needed brave
 
 sudo systemctl enable --now nordvpnd
 sudo gpasswd -a $(whoami) nordvpn
