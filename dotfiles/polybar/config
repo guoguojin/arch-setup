@@ -113,10 +113,10 @@ module-margin-left = 3
 module-margin-right = 3
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "SF Pro Display Light:size=15;0"
-font-1 = "FontAwesome:size=15;0"
-font-2 = "SF Pro Display Light:size=15;0"
-font-3 = "Noto Sans Mono:size=15;0"
+font-0 = "SF Pro Display Light:size=11;0"
+font-1 = "FontAwesome:size=11;0"
+font-2 = "SF Pro Display Light:size=11;0"
+font-3 = "Noto Sans Mono:size=11;0"
 
 modules-left = i3 xwindow
 modules-center = uptime date vpn-nordvpn-status
@@ -202,10 +202,10 @@ module-margin-left = 3
 module-margin-right = 3
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "SF Pro Display Light:size=15;0"
-font-1 = "FontAwesome:size=15;0"
-font-2 = "SF Pro Display Light:size=15;0"
-font-3 = "Noto Sans Mono:size=15;0"
+font-0 = "SF Pro Display Light:size=11;0"
+font-1 = "FontAwesome:size=11;0"
+font-2 = "SF Pro Display Light:size=11;0"
+font-3 = "Noto Sans Mono:size=11;0"
 
 modules-left = i3 xwindow
 modules-center = 
@@ -298,13 +298,14 @@ module-margin-left = 3
 module-margin-right = 3
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "SF Pro Display Light:size=15;0"
-font-1 = "FontAwesome:size=15;0"
-font-2 = "SF Pro Display Light:size=15;0"
-font-3 = "Noto Sans Mono:size=15;0"
+font-0 = "SF Pro Display Light:size=11;0"
+font-1 = "FontAwesome:size=11;0"
+font-2 = "SF Pro Display Light:size=11;0"
+font-3 = "Noto Sans Mono:size=11;0"
+
 
 modules-left = load-average temperature2 memory2 cpu1 
-modules-center = arch-aur-updates weather spotify1
+modules-center = arch-aur-updates aur-updates weather spotify1
 modules-right = volume backlight-acpi battery filesystem
 
 separator = |
@@ -1066,7 +1067,7 @@ format-background = ${colors.background}
 
 [module/arch-aur-updates]
 type = custom/script
-exec = ~/.config/polybar/scripts/check-all-updates.sh
+exec = ~/.config/polybar/scripts/check-arch-updates.sh
 interval = 30
 label = Updates: %output%
 format-foreground = ${colors.foreground}
@@ -1078,7 +1079,7 @@ format-underline = #FFBB00
 
 [module/aur-updates]
 type = custom/script
-exec = cower -u | wc -l
+exec = ~/.config/polybar/scripts/check-aur-updates.sh
 interval = 1000
 label = Aur: %output%
 format-foreground = ${colors.foreground}

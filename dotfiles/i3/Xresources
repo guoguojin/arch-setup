@@ -4,7 +4,7 @@
 ! https://critical.ch/xterm/
 ! ------------------------------------------------------------------------------
 
-Xft.dpi: 120
+Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb

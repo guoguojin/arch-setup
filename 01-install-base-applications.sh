@@ -13,6 +13,7 @@ yay -S --noconfirm --needed zplug
 yay -S --noconfirm --needed zsh 
 yay -S --noconfirm --needed zsh-syntax-highlighting 
 yay -S --noconfirm --needed zsh-theme-powerlevel10k 
+yay -S --noconfirm --needed zsh-completions
 yay -S --noconfirm --needed oh-my-zsh-git 
 yay -S --noconfirm --needed terminator 
 yay -S --noconfirm --needed visual-studio-code-bin 
@@ -36,8 +37,6 @@ yay -S --noconfirm --needed gitflow-avh
 yay -S --noconfirm --needed gitflow-zshcompletion-avh 
 yay -S --noconfirm --needed sublime-text
 yay -S --noconfirm --needed tomb 
-yay -S --noconfirm --needed system-san-francisco-font-git 
-yay -S --noconfirm --needed otf-san-francisco-pro 
 yay -S --noconfirm --needed otf-san-francisco-mono 
 yay -S --noconfirm --needed powerline 
 yay -S --noconfirm --needed powerline-fonts 
@@ -66,3 +65,8 @@ yay -S --noconfirm --needed simplenote-electron-bin
 yay -S --noconfirm --needed telegram-desktop
 yay -S --noconfirm --needed arandr
 yay -S --noconfirm --needed solaar
+yay -S --noconfirm --needed picom
+yay -S --noconfirm --needed alacritty
+
+sudo systemctl enable --now nordvpnd
+sudo gpasswd -a $(whoami) nordvpn
