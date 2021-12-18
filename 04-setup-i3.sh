@@ -4,6 +4,8 @@ cwd=$(dirname "$0")
 source $cwd/funcs.sh
 TIMESTAMP=$(date +%Y%m%dT%H%M%S)
 
+yay -S --noconfirm --needed arcolinux-logout
+
 git clone https://github.com/klaxalk/i3-layout-manager.git $HOME/code/personal/i3-layout-manager
 
 mkdir -p $HOME/.config/i3
