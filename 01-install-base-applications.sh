@@ -36,7 +36,6 @@ yay -S --noconfirm --needed gitflow-avh
 yay -S --noconfirm --needed gitflow-zshcompletion-avh 
 yay -S --noconfirm --needed sublime-text
 yay -S --noconfirm --needed tomb 
-yay -S --noconfirm --needed otf-san-francisco 
 yay -S --noconfirm --needed system-san-francisco-font-git 
 yay -S --noconfirm --needed otf-san-francisco-pro 
 yay -S --noconfirm --needed otf-san-francisco-mono 
