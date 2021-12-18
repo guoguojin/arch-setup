@@ -1156,7 +1156,7 @@ exec --no-startup-id "sleep 3 && autorandr --change"
 exec --no-startup-id "sh -c 'killall jetbrains-toolbox && sleep 30 && exec /usr/bin/jetbrains-toolbox --minimize'"
 
 # Start the protonmail bridge
-exec --no-startup-id sh -c "sleep 30 && /usr/bin/protonmail-bridge"
+#exec --no-startup-id sh -c "sleep 30 && /usr/bin/protonmail-bridge"
 
 exec --no-startup-id sh -c "sleep 3 && /usr/bin/telegram-desktop -startintray"
 exec --no-startup-id sh -c "sleep 3 && /usr/bin/slack -u"

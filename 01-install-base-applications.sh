@@ -69,6 +69,15 @@ yay -S --noconfirm --needed picom
 yay -S --noconfirm --needed alacritty
 yay -S --noconfirm --needed brave-bin
 yay -S --noconfirm --needed variety
+yay -S --noconfirm --needed spotify
+yay -S --noconfirm --needed autotiling
+yay -S --noconfirm --needed pamac
+yay -S --noconfirm --needed volumeicon
+yay -S --noconfirm --needed xfce4-power-manager
+yay -S --noconfirm --needed pcmanfm
+yay -S --noconfirm --needed playerctl
+yay -S --noconfirm --needed unclutter
+
 
 sudo systemctl enable --now nordvpnd
 sudo gpasswd -a $(whoami) nordvpn
