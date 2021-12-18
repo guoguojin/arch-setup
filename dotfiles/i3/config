@@ -1172,7 +1172,7 @@ exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen -l --off 300' 
 exec --no-startup-id /usr/bin/udiskie --tray
 exec --no-startup-id /usr/bin/udiskie-mount -a
 
-exec --no-startup-id "sh -c 'sleep 5 && command -v solaar > /dev/null 2>&1 && solaar'"
+exec --no-startup-id "sh -c 'sleep 5 && command -v solaar > /dev/null 2>&1 && solaar -w hide'"
 
 exec --no-startup-id sleep 5; i3-msg 'workspace 1; exec --no-startup-id $HOME/bin/layout_manager.sh TERMINAL; exec --no-startup-id sh -c "sleep 2 && alacritty"; exec --no-startup-id sh -c "sleep 2 && alacritty"; exec --no-startup-id sh -c "sleep 2 && alacritty"'
 
