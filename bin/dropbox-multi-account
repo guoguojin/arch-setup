@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Before running, you need to download Dropbox Headless into the $HOME and $HOME/.dropbox-bl folders first
+# wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+
+# We have to temporarily re-assign HOME in order to start dropbox from separate installation folders
+# We keep a copy of the original $HOME variable to use so we don't have to hard code the user HOME directory
+USER_HOME=$HOME
+
+HOME=$USER_HOME/.dropbox-bl $USER_HOME/.dropbox-bl/.dropbox-dist/dropboxd start -i &
+HOME=$USER_HOME $USER_HOME/.dropbox-dist/dropboxd start -i &

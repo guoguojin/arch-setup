@@ -1,0 +1,64 @@
+# -- Conky settings -- #
+conky.config = {
+    background = false,
+    update_interval = 3,
+     
+    cpu_avg_samples = 2,
+    net_avg_samples = 2,
+     
+    override_utf8_locale = true,
+     
+    double_buffer = true,
+    no_buffers = true,
+     
+    text_buffer_size = 2048,
+    imlib_cache_size = 0,
+     
+    -- Window specifications --
+    xinerama_head = 1,
+     
+    own_window = true,
+    own_window_type = 'override',
+    own_window_transparent = true,
+    own_window_argb_value = 150,
+    own_window_argb_visual = true,
+    own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below,above',
+     
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+     
+    minimum_width = 250, 
+    minimum_height = 100,
+    maximum_width = 250,
+     
+    alignment = 'top_left',
+    gap_x = 300,
+    gap_y = 450,
+     
+    -- Graphics settings --
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = false,
+     
+    -- Text settings --
+    use_xft = true,
+    font = 'SF Pro Display Thin:size=10',
+    xftalpha = 0.8,
+     
+    uppercase = false,
+     
+    default_color = '#FFFFFF',
+ 
+};
+
+conky.text = [[
+${font SF Pro Display Thin:size=16}RAM ${alignr}$memperc%${font}
+${font SF Pro Display Thin:size=14}${stippled_hr}${font}
+
+${font SF Pro Display Thin:size=12}${top_mem name 1} ${alignr}${top_mem mem 1}
+${font SF Pro Display Thin:size=12}${top_mem name 2} ${alignr}${top_mem mem 2}
+${font SF Pro Display Thin:size=12}${top_mem name 3} ${alignr}${top_mem mem 3}
+${font SF Pro Display Thin:size=12}${top_mem name 4} ${alignr}${top_mem mem 4}
+]];
+

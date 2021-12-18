@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# information obtained from https://askubuntu.com/questions/1093147/chromium-opera-randomly-not-rendering-in-i3/1108658#1108658?newreg=eca02288fe7d4f04a92fcfb5ace1aa63
+
+echo "Killing gpu process for $1"
+echo "Process id is" $(ps aux | grep $1 | grep gpu-process | grep -v bash | awk '{print $2}') $(ps aux | grep gpu-process | grep $1 | grep -v bash | awk '{print $11}') 
+
+kill -9 $(ps aux | grep gpu-process | grep $1 | grep -v bash | awk '{print $2}')

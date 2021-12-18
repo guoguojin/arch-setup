@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ssh -N -f -L 3389:reaper.birchwoodlangham.com:3389 reaper.birchwoodlangham.com

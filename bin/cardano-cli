@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker run -it --rm --entrypoint cardano-cli -e NETWORK=${CARDANO_NETWORK} -e CARDANO_NODE_SOCKET_PATH=/ipc/node.socket -v cardano-node-ipc:/ipc inputoutput/cardano-node $@

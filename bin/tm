@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+if [ -z "$1" ]; then
+  echo "Setting session to $HOST"
+  SESSION=$HOST
+else
+  SESSION=$1
+fi
+
+tmux attach-session -t $SESSION || tmux new-session -s $SESSION
+

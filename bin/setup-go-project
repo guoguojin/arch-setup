@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+project_name=$1
+go_mod=$2
+
+usage() {
+    echo "Usage: setup-go-project <project-name> <go-mod>"
+    echo
+    echo "       project-name: folder where the project will be created under"
+    echo "       go-mod:       the go module name to use for the project"
+}
+
+if [ $# != 2 ]; then
+    usage
+    exit 1
+fi
+
+echo "Creating project" $1
+
+mkdir -p $1
+cd $1
+
+echo "Setting Go module name to" $2
+go mod init $2
+touch readme.md
+
+touch .gitignore
+echo ".env" >> .gitignore
+echo ".idea" >> .gitignore
+echo ".vscode" >> .gitignore
+echo ".history" >> .gitignore
+echo "logs" >> .gitignore
+echo "*.log" >> .gitignore
+echo "*.code-workspace" >> .gitignore
+
+touch .dockerignore
+echo ".env" >> .dockerignore
+echo ".idea" >> .dockerignore
+echo ".vscode" >> .dockerignore
+echo ".history" >> .dockerignore
+echo "logs" >> .dockerignore
+echo "*.log" >> .dockerignore
+echo "test" >> .dockerignore
+echo "*.code-workspace" >> .dockerignore
+
+mkdir -p build/docker/service/{config,scripts}
+touch build/docker/service/Dockerfile
+
+echo "version: 0.1.0
+service:
+  name: ${1}-service
+log:
+  filepath: ./logs/service.log
+  level: INFO
+  max-size: 100
+  max-backup: 5
+  max-age: 30
+  compress: false
+" > build/docker/service/config/configuration.yaml
+
+echo "#!/usr/bin/env sh
+
+exec \"\$@\"
+" > build/docker/service/scripts/entrypoint.sh
+chmod u+x build/docker/service/scripts/entrypoint.sh
+
+mkdir -p config
+cp build/docker/service/config/configuration.yaml config/
+
+mkdir -p deployments/docker/env-files
+touch deployments/docker/env-files/service.env
+
+echo "version: \"3.7\"
+
+networks:
+  default:
+    external: true
+    name: \${DEV_NETWORK_NAME}
+
+services:
+    " >> deployments/docker/docker-compose.yaml
+
+cp deployments/docker/docker-compose.yaml deployments/docker/docker-compose-dev.yaml
+cp deployments/docker/docker-compose.yaml deployments/docker/docker-compose-test.yaml
+
+mkdir -p cmd docs internal pkg
+
+echo "DEV_NETWORK_NAME=" > .env

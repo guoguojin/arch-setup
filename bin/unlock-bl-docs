@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+unlock-tomb ~/Dropbox-BL/Birchwood\ Langham\ team\ folder/bl.tomb $HOME/.tomb/bl-documents.key bl-documents.key

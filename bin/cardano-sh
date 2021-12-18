@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker run -it --rm --entrypoint bash -v node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node

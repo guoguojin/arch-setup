@@ -1,0 +1,2 @@
+export POLYBAR_NETWORK_DEVICE=$(ip link show | grep 'state UP' | awk '{print $2}' | sed 's/://' | grep -v ^wlp | head -n 1)
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+running=$(vboxmanage list runningvms | grep raven)
+
+if [[ -z $running ]]; then
+  echo 'Starting Raven'
+  vboxheadless --startvm raven > /dev/null &
+else
+  echo 'Raven is already running'
+fi
+

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+usage() {
+    echo "usage: terminator-quake [screen-setup]"
+    echo "       where screen-setup is:"
+    echo "           4K - First monitor is a 4K screen"
+    echo "           1080 - First monitor is 1080p screen"
+}
+
+if [ "$1" == "" ]; then
+  usage
+  exit
+fi
+
+case $1 in 
+    1080)
+        terminator --title=terminator-quake -b --profile=quake --layout=default --geometry 3840x1080+1920+0 &;;
+    *) 
+        terminator --title=terminator-quake -b --profile=quake --layout=default --geometry 3840x1080+0+0 &;;
+esac

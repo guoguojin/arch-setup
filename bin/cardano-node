@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker run --rm -e NETWORK=${CARDANO_NETWORK} -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node

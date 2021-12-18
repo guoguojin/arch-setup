@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ssh -D 9090 -N -f tanq@reaper.birchwoodlangham.com

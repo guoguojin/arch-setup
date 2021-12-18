@@ -1,0 +1,284 @@
+export TERM="xterm-256color"
+
+# Path to your oh-my-zsh installation.
+ZSH=/usr/share/oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# ZSH_THEME="agnoster"
+# POWERLEVEL9K_MODE='awesome-fontconfig'
+POWERLEVEL9K_MODE='nerdfont-complete'
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+
+if [ `tput colors` != "256" ]; then
+	ZSH_THEME="robbyrussell"
+fi
+
+# eval `dircolors ~/code/personal/dircolors-solarized/dircolors.256dark`
+
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+[[ -r "$HOME/bin/z/z.sh" ]] && . ~/bin/z/z.sh
+
+[[ -r "$HOME/android/sdk" ]] && ANDROID_HOME=$HOME/android/sdk
+
+fpath+=~/.zfunc
+
+PATH=$PATH:$HOME/bin:$HOME/.local/bin:$PATH
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="yyyy-mm-dd"
+HISTCONTROL=ignoreboth
+
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM=~/.zsh_custom
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(git sbt scala thefuck archlinux docker tmux kubectl virtualenv docker-compose golang)
+
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export EDITOR="vim"
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
+
+eval $(thefuck --alias)
+
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
+
+source $ZSH/oh-my-zsh.sh
+# source /usr/share/zsh/site-functions/git-flow-completion.zsh
+
+# PROMPT="$addprompt $PROMPT"
+
+# source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%K{black}%F{default}%}\u250C"
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{default}\u2517 $(prompt_task left 1)%K{default}%F{black}\uE0B0 %f%k%F{default}\uf054%f%{%F{default}%} "
+
+#pltask functions
+## pltask is a lightweight facade to taskwarrior for use with Powerlevel9k's Last Prompt Prefix (by dmidlo @querentCode)
+## Be sure to set search.case.sensitive=no within .taskrc
+
+pltask () {
+    setNewlinePrompt () {
+        # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}%K{black}%F{white} $1 %f%k%F{white}%f $ "
+        # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%K{black}%F{white} $1 %f%k%F{black}\uE0B0%f %{%F{default}%} "
+        # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%} "
+ 	    POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{default}\u2514 $1 %f%k%F{black}\uE0B0%f%k%F{default} "
+    }
+
+    if [ -n "$3" ]; then
+        echo "pltask only supports two args. did\nyou remember to use quotes when\ncreating a task?"
+        return 1
+    elif [ -z "$1" ]; then
+        export PLTASK=`task _get 1.description`
+        if [ -z "$PLTASK" ]; then
+            echo "no tasks in queue, go do something else"
+            echo "Setting pltask to '.' "
+            setNewlinePrompt "."
+        else
+            echo "Setting pltask to first task from taskwarrior:" $PLTASK
+            setNewlinePrompt $PLTASK
+        fi
+    elif [[ $1 = "_print" || $1 = "_p" ]]; then
+         echo $PLTASK
+    elif [[ $1 = "help" || $1 = "h" ]]; then
+        echo "\n pltask is a lightweight facade to taskwarrior for use with Powerlevel9k's Last Prompt Prefix\n"
+        echo   Options:
+        echo -----------------------------------------------------------------------------
+        echo   "  No args           ---   Calls first available task from taskwarrior."
+        echo   "  help              ---   h - This help dialog."
+        echo   "  list              ---   ls - A Wrapper for \'task next\'."
+        echo   "  set  <taskID>     ---   s - Sets the pltask prompt to description of specified task id."
+        echo   "  done              ---   d - Completes the current task and sets pltask to next task."
+        echo   "  \"string\"          ---       \"string\" with no additional arguments, sets the pltask prompt but no new task."
+        echo   "  \"string\" add      ---   a - \"string\" followed by 'add' will set the pltask and add a new task to taskwarrior.\n\n"
+        echo   Examples:
+        echo "-----------------------------------------------------------------------------\n"
+        echo "   Create a task:"
+        echo "      $ pltask \"Edit Super Cool Project\" add"
+        echo "      $ pltask \"Write Blog Post\" a"
+    elif [[ $1 = "list" || $1 = "ls" ]]; then
+        task next
+    elif [[ $1 = "set" || $1 = "s" ]]; then
+        export PLTASK=`task _get $2.description`
+        if [ -z "$PLTASK" ]; then
+            export PLTASK=`task _get 1.description`
+            if [ -z "$PLTASK" ]; then
+                pltask
+            else
+                echo "no task with id $2 in queue"
+                echo "Setting pltask to first available task: " $PLTASK
+                setNewlinePrompt $PLTASK
+            fi
+        else
+            echo "Setting pltask to task id $2:" $PLTASK
+            setNewlinePrompt $PLTASK
+        fi
+    elif [[ $1 = "done" || $1 = "d" ]]; then
+        task /$PLTASK/ done
+        task
+        export PLTASK=`task _get 1.description`
+        if [ -z "$PLTASK" ]; then
+                pltask
+        else
+            echo "Setting pltask to next task: "$PLTASK
+            setNewlinePrompt $PLTASK
+        fi
+    elif [ -z "$2" ]; then
+        setNewlinePrompt $1
+
+        if [[ "$1" != "-" && "$1" != "." ]]; then 
+            echo "terminal pltask set to" $1 "But no task has been created"
+        fi
+    elif [[ $2 = "add" || $2 = "a" ]]; then
+        export PLTASK="$1"
+        task "$1" add
+        task
+        setNewlinePrompt $1
+    fi
+}
+
+# Initial state
+pltask "-"
+
+alias pt="pltask"
+
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+
+
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:$GOPATH/bin:$PATH:$HOME/.cargo/bin
+export GO111MODULE=auto
+
+source /usr/share/zsh/scripts/zplug/init.zsh
+
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/sbt", from:oh-my-zsh
+zplug "plugins/scala", from:oh-my-zsh
+zplug "plugins/thefuck", from:oh-my-zsh
+zplug "plugins/archlinux", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/kubectl", from:oh-my-zsh
+zplug "plugins/virtualenv", from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
+zplug "plugins/golang", from:oh-my-zsh
+zplug "plugins/rust", from:oh-my-zsh
+zplug "plugins/cargo", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
+zplug "plugins/taskwarrior", from:oh-my-zsh
+zplug "plugins/aws", from:oh-my-zsh
+zplug "plugins/terraform", from:oh-my-zsh
+
+
+zplug romkatv/powerlevel10k, as:theme, depth:1
+
+# Set the priority when loading
+# e.g., zsh-syntax-highlighting must be loaded
+# after executing compinit command and sourcing other plugins
+# (If the defer tag is given 2 or above, run after compinit command)
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+  fi
+
+# Then, source plugins and add commands to $PATH
+zplug load #--verbose
+
+
+
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+# zsh syntax highlighting
+# WARNING!!!! THIS MUST BE THE LAST LINE OF THE .zshrc FILE!!!!!
+#
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+: ${POWERLEVEL9K_COLOR_SCHEME:=light}
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault
+
+
+[[ -s "/home/tanq/.gvm/scripts/gvm" ]] && source "/home/tanq/.gvm/scripts/gvm"

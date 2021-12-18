@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+usage() {
+	echo "Usage: unlock-tomb <tomb-file> <tomb-key> <password-name>"
+	echo "where: tomb-file is the path to your tomb file"
+	echo "       tomb-key is the path to your tomb key"
+	echo "       password-name is the name of the password to fetch from your password store"
+	echo ""
+	echo "example: unlock-tomb /home/me/my-tomb.tomb /home/me/my-tomb.tomb.key my-very-secret-tomb-key"
+}
+
+if { [ $# != 0 ] && [ $1 == "--help" ]; } || [ $# != 3 ]; then
+	usage
+	exit
+fi 
+
+tombfile=$1
+tombkey=$2
+password=$3
+
+lpass show -c --password ${password}
+sudo swapoff -a
+tomb open ${tombfile} -k ${tombkey}
+sudo swapon -a

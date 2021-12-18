@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+usage() {
+    echo "Usage: gitlab-release [create|delete] -T token -t tag -p project_id [-n release_name] [-d description]"
+    echo "where: create will create a new release."
+    echo "       delete will delete an existing release"
+    echo ""
+    echo "Required:"
+    echo "  -T   Your GitLab security token"
+    echo "  -t   The tag to use for the release"
+    echo "  -p   The gitlab project id"
+    echo ""
+    echo "Options:"
+    echo "  -n   Required for create: The name of the release"
+    echo "  -d   Required for create: A description of the release (markdown supported) e.g. release notes etc."
+    echo ""
+}
+
+if [ $# != 0 ] && [ $1 == "--help" ]; then
+  usage
+  exit
+fi
+
+if [ "$1" == "" ]; then
+  usage
+  exit
+fi
+
+COMMAND=$1
+shift
+
+if [[ -f $PWD/.gitlab-release.env ]]; then 
+    echo "Using gitlab-release.env file"
+    source $PWD/.gitlab-release.env
+else 
+    while [ "$1" != "" ]
+    do
+        case "$1" in 
+            -T)
+                shift
+                GITLAB_TOKEN=$1
+                ;;
+            -t)
+                shift
+                TAG=$1
+                ;;
+            -p) 
+                shift
+                PROJECT_ID=$1
+                ;;
+
+            -n)
+                shift 
+                RELEASE_NAME=$1
+                ;;
+            -d) 
+                shift
+                DESCRIPTION=$1
+                ;;
+            *)
+                # Do nothing
+                ;;
+        esac
+        shift
+    done
+fi
+
+case $COMMAND in 
+    create)
+        if [[ -z $GITLAB_TOKEN ]] || [[ -z $RELEASE_NAME ]] || [[ -z $TAG ]] || [[ -z $DESCRIPTION ]] || [[ -z $PROJECT_ID ]]; then
+            echo "GITLAB_TOKEN, RELEASE_NAME, TAG and DESCRIPTION need to be specified"
+            exit 1
+        fi
+
+        echo "Creating release"
+
+        http POST https://gitlab.com/api/v4/projects/${PROJECT_ID}/releases PRIVATE-TOKEN:"${GITLAB_TOKEN}" name="${RELEASE_NAME}" tag_name="${TAG}" description="${DESCRIPTION}"
+        ;;
+    delete)
+        if [[ -z $GITLAB_TOKEN ]] || [[ -z $TAG ]] || [[ -z $PROJECT_ID ]]; then
+            echo "GITLAB_TOKEN, and TAG need to be specified"
+            exit 1
+        fi
+
+        echo "Deleting release"
+        
+        http DELETE https://gitlab.com/api/v4/projects/${PROJECT_ID}/releases/${TAG} PRIVATE-TOKEN:"${GITLAB_TOKEN}"
+        ;;
+    *)
+        usage;;
+esac

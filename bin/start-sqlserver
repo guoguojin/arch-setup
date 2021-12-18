@@ -1,0 +1,2 @@
+# docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P455w0rd' -p 1433:1433 -d --rm --name microsoft-mssql-server-linux -v $HOME/data:/var/opt/mssql/data microsoft/mssql-server-linux
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Pa55w0rd!' -p 1433:1433 -v mssql-server-data:/var/opt/mssql --name mssql-server -d microsoft/mssql-server-linux:latest

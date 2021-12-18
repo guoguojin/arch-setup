@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+for PROC in "$@"
+do
+  ps aux | grep -i $PROC | grep -v grep
+done
+
