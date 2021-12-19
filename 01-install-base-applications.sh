@@ -5,32 +5,21 @@ mkdir -p $HOME/bin
 sudo pacman -S --noconfirm --needed linux-headers
 yay -S --noconfirm --needed go 
 yay -S --noconfirm --needed sbt 
-yay -S --noconfirm --needed rustup 
 yay -S --noconfirm --needed jdk-openjdk 
 yay -S --noconfirm --needed tmux 
 yay -S --noconfirm --needed thefuck 
-yay -S --noconfirm --needed zplug 
-yay -S --noconfirm --needed zsh 
-yay -S --noconfirm --needed zsh-syntax-highlighting 
-yay -S --noconfirm --needed zsh-theme-powerlevel10k 
-yay -S --noconfirm --needed zsh-completions
-yay -S --noconfirm --needed oh-my-zsh-git 
 yay -S --noconfirm --needed terminator 
 yay -S --noconfirm --needed visual-studio-code-bin 
 yay -S --noconfirm --needed jetbrains-toolbox 
 yay -S --noconfirm --needed vim 
 yay -S --noconfirm --needed numix-circle-arc-icons-git 
 yay -S --noconfirm --needed xorg-xrandr 
-yay -S --noconfirm --needed restic 
 yay -S --noconfirm --needed remmina 
 yay -S --noconfirm --needed freerdp 
 yay -S --noconfirm --needed nxproxy 
 yay -S --noconfirm --needed lastpass-cli 
 yay -S --noconfirm --needed xclip 
-yay -S --noconfirm --needed docker 
-yay -S --noconfirm --needed docker-compose 
 yay -S --noconfirm --needed pass 
-yay -S --noconfirm --needed libu2f-host 
 yay -S --noconfirm --needed dropbox-cli 
 yay -S --noconfirm --needed rescuetime2 
 yay -S --noconfirm --needed gitflow-avh 
@@ -43,7 +32,6 @@ yay -S --noconfirm --needed powerline-fonts
 yay -S --noconfirm --needed fzf 
 yay -S --noconfirm --needed npm 
 yay -S --noconfirm --needed gmrun 
-yay -S --noconfirm --needed dotnet-sdk 
 yay -S --noconfirm --needed neofetch 
 yay -S --noconfirm --needed lldb 
 yay -S --noconfirm --needed awesome-terminal-fonts 
@@ -54,7 +42,6 @@ yay -S --noconfirm --needed udiskie
 yay -S --noconfirm --needed jq
 yay -S --noconfirm --needed xdotool
 yay -S --noconfirm --needed autorandr
-yay -S --noconfirm --needed nordvpn
 yay -S --noconfirm --needed polybar-scripts-git
 yay -S --noconfirm --needed kitty
 yay -S --noconfirm --needed slack-desktop
@@ -78,6 +65,3 @@ yay -S --noconfirm --needed pcmanfm
 yay -S --noconfirm --needed playerctl
 yay -S --noconfirm --needed unclutter
 
-
-sudo systemctl enable --now nordvpnd
-sudo gpasswd -a $(whoami) nordvpn
