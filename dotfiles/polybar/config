@@ -1563,8 +1563,8 @@ format-online-background = ${colors.background}
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
 ;interface = wlp3s0
-;interface = enp0s31f6
-interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s31f6} 
+;interface = enp0s20f0u4u3c2
+interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s20f0u4u3c2} 
 ;interface = wlp5s0
 ;interface = enp4s0
 label-connected = "%upspeed:7%"
@@ -1581,8 +1581,8 @@ format-connected-background = ${colors.background}
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
 ;interface = wlp3s0
-;interface = enp0s31f6
-interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s31f6}
+;interface = enp0s20f0u4u3c2
+interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s20f0u4u3c2}
 ;interface = enp62s0u1u3c2
 ;interface = enp4s0
 label-connected = "%downspeed:7%"
@@ -1599,7 +1599,8 @@ format-connected-background = ${colors.background}
 [module/wifispeeddown]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-interface = wlp0s20f3
+# interface = wlp0s20f3
+interface = wlo1
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = ""
@@ -1613,7 +1614,8 @@ format-connected-background = ${colors.background}
 [module/wifispeedup]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-interface = wlp0s20f3
+# interface = wlp0s20f3
+interface = wlo1
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = ""
@@ -1857,8 +1859,8 @@ tail = true
 [module/wired-network]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-;interface = enp0s31f6
-interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s31f6}
+;interface = enp0s20f0u4u3c2
+interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s20f0u4u3c2}
 ;interface = enp14s0
 interval = 3.0
 
@@ -1891,7 +1893,8 @@ label-disconnected-background = ${colors.background}
 [module/wireless-network]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-interface = wlp0s20f3
+# interface = wlp0s20f3
+interface = wlo1
 interval = 3.0
 label-connected = %local_ip%
 
