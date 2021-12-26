@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cwd=$(dirname "$0")
+source $cwd/funcs.sh
 yay -S --noconfirm --needed restic 
 # Set up restic for backups
 echo "Setting up restic backups"
