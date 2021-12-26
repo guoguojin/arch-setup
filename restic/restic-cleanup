@@ -4,4 +4,4 @@
 # and will prune immediately after backup
 source $HOME/.restic.env
 
-restic -r b2:mockingbird-backup:/restic/tanq/repo forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune
+restic -r b2:hawkeye-backup:/restic/repo forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune

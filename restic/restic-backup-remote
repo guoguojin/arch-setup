@@ -2,4 +2,4 @@
 
 source $HOME/.restic.env
 
-restic -r b2:mockingbird-backup:/restic/tanq/repo backup /home/tanq/ --verbose --exclude-file=/home/tanq/restic-excludes
+restic -r b2:hawkeye-backup:/restic/repo backup /home/tanq/ --verbose --exclude-file=/home/tanq/bin/restic-excludes

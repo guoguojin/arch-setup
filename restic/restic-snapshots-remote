@@ -2,4 +2,4 @@
 
 source $HOME/.restic.env
 
-restic -r b2:mockingbird-backup:/restic/tanq/repo snapshots
+restic -r b2:hawkeye-backup:/restic/repo snapshots

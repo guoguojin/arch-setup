@@ -2,4 +2,4 @@
 
 source $HOME/.restic.env
 
-restic -r /run/media/tanq/SDCARD/restic/repo snapshots
+restic -r /restic/repo snapshots

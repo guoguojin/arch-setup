@@ -2,5 +2,5 @@
 
 source $HOME/.restic.env
 
-restic -r b2:mockingbird-backup:/restic/tanq/repo unlock
+restic -r b2:hawkeye-backup:/restic/repo unlock
 
