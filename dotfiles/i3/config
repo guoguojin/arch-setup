@@ -1197,3 +1197,14 @@ exec unclutter
 exec --no-startup-id sleep 10; remmina -i
 #exec --no-startup-id "sleep 20 && autorandr -c 1080p && sleep 5 && autorandr -c 2K"
 
+bindsym $mod+Shift+s mode "$screens"
+set $screens Switch screen mode, 1 (default), 2 (intel-with-hdmi)?
+
+mode "$screens" {
+    bindsym 1 exec --no-startup-id autorandr -c default, mode default, restart
+    bindsym 2 exec --no-startup-id autorandr -c intel-with-hdmi, mode default, restart
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
