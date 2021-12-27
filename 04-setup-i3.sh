@@ -62,3 +62,8 @@ echo "Configuring Picom"
 backup_and_create $PWD/dotfiles/picom/picom.conf $HOME/.config/i3/picom.conf
 backup_and_create $PWD/dotfiles/i3/scripts/picom-toggle.sh $HOME/.config/i3/scripts/picom-toggle.sh
 
+echo "Configuring Dunst"
+yay -S --needed --noconfirm dunst
+mkdir -p $HOME/.config/dunst
+backup_and_create $PWD/dotfiles/dunst/dunstrc $HOME/.config/dunst/dunstrc
+
