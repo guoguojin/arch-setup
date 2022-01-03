@@ -1178,7 +1178,7 @@ exec --no-startup-id sleep 5; i3-msg 'workspace 1; exec --no-startup-id $HOME/bi
 
 exec --no-startup-id rescuetime
 
-exec --no-startup-id terminator --title=terminator-quake -b --profile=quake --layout=default --geometry 3640x1080 
+# exec --no-startup-id terminator --title=terminator-quake -b --profile=quake --layout=default --geometry 3640x1080 
 
 exec --no-startup-id sleep 10; i3-msg 'workspace 10; exec $HOME/bin/layout_manager.sh COMMS; exec --no-startup-id sh -c "sleep 1 && /usr/bin/slack"; exec --no-startup-id sh -c "sleep 1 && /usr/bin/telegram-desktop"; exec --no-startup-id sh -c "sleep 1 && /home/tanq/bin/whatsapp"'
 
@@ -1201,7 +1201,7 @@ bindsym $mod+Shift+s mode "$screens"
 set $screens Switch screen mode, 1 (main), 2 (right two), 3 (all), or 4 (left two)?
 
 mode "$screens" {
-    bindsym 1 exec --no-startup-id autorandr -c main-screen-only, mode default, restart
+    bindsym 1 exec --no-startup-id autorandr -c default, mode default, restart
     bindsym 2 exec --no-startup-id autorandr -c right-two, mode default, restart
     bindsym 3 exec --no-startup-id autorandr -c all-screens, mode default, restart
     bindsym 4 exec --no-startup-id autorandr -c left-two, mode default, restart
