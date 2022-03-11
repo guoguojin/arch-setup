@@ -64,4 +64,8 @@ yay -S --noconfirm --needed xfce4-power-manager
 yay -S --noconfirm --needed pcmanfm
 yay -S --noconfirm --needed playerctl
 yay -S --noconfirm --needed unclutter
+yay -S --noconfirm --needed xautolock
+yay -S --noconfirm --needed pacman-contrib
+yay -S --noconfirm --needed downgrade
+
 
