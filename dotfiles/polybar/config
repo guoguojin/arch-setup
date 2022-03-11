@@ -1363,7 +1363,7 @@ type = internal/fs
 
 ; Mountpoints to display
 mount-0 = /
-mount-1 = /home
+;mount-1 = /home
 ;mount-2 = /var
 ;mount-3 = /opt
 ;mount-4 = /backup
