@@ -122,7 +122,7 @@ source $ZSH/oh-my-zsh.sh
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%K{black}%F{default}%}\u250C"
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%K{white}%F{default}%}\u250C"
 # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{default}\u2517 $(prompt_task left 1)%K{default}%F{black}\uE0B0 %f%k%F{default}\uf054%f%{%F{default}%} "
 
 #pltask functions
@@ -134,7 +134,7 @@ pltask () {
         # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}%K{black}%F{white} $1 %f%k%F{white}%f $ "
         # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%K{black}%F{white} $1 %f%k%F{black}\uE0B0%f %{%F{default}%} "
         # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%} "
- 	    POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{default}\u2514 $1 %f%k%F{black}\uE0B0%f%k%F{default} "
+ 	    POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{white}%F{default}\u2514 $1 %f%k%F{white}\uE0B0%f%k%F{default} "
     }
 
     if [ -n "$3" ]; then
