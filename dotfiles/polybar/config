@@ -1080,7 +1080,7 @@ format-underline = #FFBB00
 [module/aur-updates]
 type = custom/script
 exec = ~/.config/polybar/scripts/check-aur-updates.sh
-interval = 1000
+interval = 30
 label = Aur: %output%
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
