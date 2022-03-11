@@ -1198,11 +1198,13 @@ exec --no-startup-id sleep 10; remmina -i
 #exec --no-startup-id "sleep 20 && autorandr -c 1080p && sleep 5 && autorandr -c 2K"
 
 bindsym $mod+Shift+s mode "$screens"
-set $screens Switch screen mode, 1 (default), 2 (intel-with-hdmi)?
+set $screens Switch screen mode, 1 (intel-undocked), 2 (intel-docked), 3 (nvidia-undocked), 4 (nvidia-docked)?
 
 mode "$screens" {
-    bindsym 1 exec --no-startup-id autorandr -c default, mode default, restart
-    bindsym 2 exec --no-startup-id autorandr -c intel-with-hdmi, mode default, restart
+    bindsym 1 exec --no-startup-id autorandr -c intel-undocked, mode default, restart
+    bindsym 2 exec --no-startup-id autorandr -c intel-docked, mode default, restart
+    bindsym 3 exec --no-startup-id autorandr -c nvidia-undocked, mode default, restart
+    bindsym 4 exec --no-startup-id autorandr -c nvidia-docked, mode default, restart
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
