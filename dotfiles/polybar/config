@@ -1140,7 +1140,7 @@ bar-empty = ─
 [module/battery]
 ;https://github.com/jaagr/polybar/wiki/Module:-battery
 type = internal/battery
-battery = BAT0
+battery = BAT1
 adapter = AC0
 full-at = 100
 
