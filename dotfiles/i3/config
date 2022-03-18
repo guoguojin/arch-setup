@@ -1205,7 +1205,7 @@ mode "$screens" {
     bindsym 2 exec --no-startup-id autorandr -c intel-docked, mode default, restart
     bindsym 3 exec --no-startup-id autorandr -c nvidia-undocked, mode default, restart
     bindsym 4 exec --no-startup-id autorandr -c nvidia-docked, mode default, restart
-    bindsym 4 exec --no-startup-id autorandr -c nvidia-docked-swap, mode default, restart
+    bindsym 5 exec --no-startup-id autorandr -c nvidia-docked-swap, mode default, restart
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
