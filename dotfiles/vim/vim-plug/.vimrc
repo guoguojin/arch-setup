@@ -45,7 +45,7 @@ Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
@@ -53,6 +53,7 @@ Plug 'haishanh/night-owl.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'AndrewRadev/splitjoin.vim'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -490,6 +491,7 @@ let g:go_fmt_fail_silently = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
@@ -499,6 +501,14 @@ let g:go_highlight_space_tab_error = 0
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_addtags_transform = "camelcase"
+let g:go_metalinter_enabled = ['vet', 'errcheck', 'golangci-lint']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golangci-lint']
+let g:go_metalinter_deadline = "5s" 
+
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
@@ -510,7 +520,6 @@ augroup completion_preview_close
 augroup END
 
 augroup go
-
   au!
   au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
@@ -522,16 +531,19 @@ augroup go
   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
 
   au FileType go nmap <leader>r  <Plug>(go-run)
+  au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
   au FileType go nmap <leader>t  <Plug>(go-test)
-  au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
+  au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
   au FileType go nmap <Leader>i <Plug>(go-info)
   au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
   au FileType go nmap <C-g> :GoDecls<cr>
   au FileType go nmap <leader>dr :GoDeclsDir<cr>
   au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
   au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
-  au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
 
+  au FileType go map <C-n> :cnext<CR>
+  au FileType go map <C-m> :cprevious<CR>
+  au FileType go nnoremap <leader>a :cclose<CR>
 augroup END
 
 " ale

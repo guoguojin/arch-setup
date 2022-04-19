@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-yay -S --noconfirm --needed displaylink evdi-git
+yay -S --noconfirm --needed displaylink evdi
 
 systemctl enable displaylink.service
 

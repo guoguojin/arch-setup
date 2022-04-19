@@ -503,7 +503,7 @@ exec_always --no-startup-id "sh -c 'killall dropbox; sleep 30; exec $HOME/bin/dr
 exec --no-startup-id volumeicon
 
 #variety
-exec --no-startup-id variety
+# exec --no-startup-id variety
 
 # clipman
 #exec --no-startup-id xfce4-clipman
@@ -1197,3 +1197,15 @@ exec unclutter
 exec --no-startup-id sleep 10; remmina -i
 #exec --no-startup-id "sleep 20 && autorandr -c 1080p && sleep 5 && autorandr -c 2K"
 
+bindsym $mod+Shift+s mode "$screens"
+set $screens Switch screen mode, 1 (undocked), 2 (docked-2-1)?
+
+mode "$screens" {
+    bindsym 1 exec --no-startup-id autorandr -c undocked, mode default, restart
+    bindsym 2 exec --no-startup-id autorandr -c docked-2-1, mode default, restart
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+nitrogen --restore
