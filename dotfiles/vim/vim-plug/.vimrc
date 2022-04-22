@@ -509,6 +509,10 @@ let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golangci-lint']
 let g:go_metalinter_deadline = "5s" 
 
+" disable vim-go :GoDef shortcut (gd)
+" this is handled by LanguageClient (LC)
+let g:go_def_mapping_enabled = 0
+
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
