@@ -503,7 +503,7 @@ exec_always --no-startup-id "sh -c 'killall dropbox; sleep 30; exec $HOME/bin/dr
 exec --no-startup-id volumeicon
 
 #variety
-# exec --no-startup-id variety
+exec --no-startup-id variety
 
 # clipman
 #exec --no-startup-id xfce4-clipman
@@ -1208,4 +1208,5 @@ mode "$screens" {
     bindsym Escape mode "default"
 }
 
-exec --no-startup-id nitrogen --restore
+# exec --no-startup-id nitrogen --restore
+# bindsym Mod1+Shift+n exec --no-startup-id nitrogen --restore

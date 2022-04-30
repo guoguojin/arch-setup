@@ -5,6 +5,7 @@ source $cwd/funcs.sh
 TIMESTAMP=$(date +%Y%m%dT%H%M%S)
 
 yay -S --noconfirm --needed arcolinux-logout
+yay -S --noconfirm --needed feh  # required for variety to display the wallpapers correctly on multiple screens
 
 git clone https://github.com/klaxalk/i3-layout-manager.git $HOME/code/personal/i3-layout-manager
 
