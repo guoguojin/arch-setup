@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+notify-send "Brightness - $(brightnessctl i | grep 'Current brightness' | cut -d' ' -f4 | awk '{print substr($0, 2, length($0) - 2)}')"
+

@@ -306,7 +306,7 @@ font-3 = "Noto Sans Mono:size=11;0"
 
 modules-left = load-average temperature2 memory2 cpu1 
 modules-center = arch-aur-updates aur-updates weather spotify1
-modules-right = volume backlight-acpi battery filesystem
+modules-right = pulseaudio-control backlight battery filesystem
 
 separator = |
 
@@ -1104,6 +1104,7 @@ format-underline = #7D49B6
 [module/backlight]
 ;https://github.com/jaagr/polybar/wiki/Module:-backlight
 
+inherit = module/xbacklight
 type = internal/backlight
 
 ; Use the following command to list available cards:
@@ -1114,13 +1115,15 @@ card = intel_backlight
 ;   <label> (default)
 ;   <ramp>
 ;   <bar>
-format = <label>
+format = <bar>
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
 ; Available tokens:
 ;   %percentage% (default)
 label = %percentage%%
+use-actual-brightness = true
+enable-scroll = true
 
 ; Only applies if <ramp> is used
 ramp-0 = 🌕
@@ -1683,6 +1686,27 @@ label = %output%
 format-prefix = "  "
 format-prefix-foreground = #FFBB00
 
+###############################################################################
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:  Built-in" --sink-nickname "alsa_output.usb-DisplayLink_ThinkPad_Hybrid_USB-C_with_USB-A_Dock_10027926-02.analog-stereo:  Dock" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
+
 ################################################################################
 
 [module/release]
@@ -1931,6 +1955,8 @@ ramp-signal-foreground = #7e52c6
 [module/xbacklight]
 ;https://github.com/jaagr/polybar/wiki/Module:-xbacklight
 type = internal/xbacklight
+output = eDP-1
+enable-scroll = true
 format = <label> <bar>
 format-prefix = "   "
 format-prefix-foreground = ${colors.foreground}

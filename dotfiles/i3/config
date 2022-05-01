@@ -746,8 +746,11 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 #################                          xbacklight                                               #################
 #####################################################################################################################
 
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen brightnesso
+
+bindsym XF86MonBrightnessUp exec brightnessctl +5% && notify-brightness
+bindsym XF86MonBrightnessDown exec brightnessctl 5%- && notify-brightness
 
 
 
