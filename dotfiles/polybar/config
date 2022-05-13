@@ -306,7 +306,7 @@ font-3 = "Noto Sans Mono:size=11;0"
 
 modules-left = load-average temperature2 memory2 cpu1 
 modules-center = arch-aur-updates aur-updates weather spotify1
-modules-right = volume backlight-acpi battery filesystem
+modules-right = pulseaudio-control backlight battery filesystem
 
 separator = |
 
@@ -1104,6 +1104,7 @@ format-underline = #7D49B6
 [module/backlight]
 ;https://github.com/jaagr/polybar/wiki/Module:-backlight
 
+inherit = module/xbacklight
 type = internal/backlight
 
 ; Use the following command to list available cards:
@@ -1114,13 +1115,15 @@ card = intel_backlight
 ;   <label> (default)
 ;   <ramp>
 ;   <bar>
-format = <label>
+format = <bar>
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
 ; Available tokens:
 ;   %percentage% (default)
 label = %percentage%%
+use-actual-brightness = true
+enable-scroll = true
 
 ; Only applies if <ramp> is used
 ramp-0 = 🌕
@@ -1140,7 +1143,7 @@ bar-empty = ─
 [module/battery]
 ;https://github.com/jaagr/polybar/wiki/Module:-battery
 type = internal/battery
-battery = BAT0
+battery = BAT1
 adapter = AC0
 full-at = 100
 
@@ -1363,7 +1366,7 @@ type = internal/fs
 
 ; Mountpoints to display
 mount-0 = /
-mount-1 = /home
+;mount-1 = /home
 ;mount-2 = /var
 ;mount-3 = /opt
 ;mount-4 = /backup
@@ -1563,8 +1566,8 @@ format-online-background = ${colors.background}
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
 ;interface = wlp3s0
-;interface = enp0s20f0u4u3c2
-interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s20f0u4u3c2} 
+;interface = enp0s31f6
+interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s31f6} 
 ;interface = wlp5s0
 ;interface = enp4s0
 label-connected = "%upspeed:7%"
@@ -1581,8 +1584,8 @@ format-connected-background = ${colors.background}
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
 ;interface = wlp3s0
-;interface = enp0s20f0u4u3c2
-interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s20f0u4u3c2}
+;interface = enp0s31f6
+interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s31f6}
 ;interface = enp62s0u1u3c2
 ;interface = enp4s0
 label-connected = "%downspeed:7%"
@@ -1599,8 +1602,7 @@ format-connected-background = ${colors.background}
 [module/wifispeeddown]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-# interface = wlp0s20f3
-interface = wlo1
+interface = wlp0s20f3
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = ""
@@ -1614,8 +1616,7 @@ format-connected-background = ${colors.background}
 [module/wifispeedup]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-# interface = wlp0s20f3
-interface = wlo1
+interface = wlp0s20f3
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = ""
@@ -1684,6 +1685,27 @@ format-underline = #FFBB00
 label = %output%
 format-prefix = "  "
 format-prefix-foreground = #FFBB00
+
+###############################################################################
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:  Built-in" --sink-nickname "alsa_output.usb-DisplayLink_ThinkPad_Hybrid_USB-C_with_USB-A_Dock_10027926-02.analog-stereo:  Dock" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
 
 ################################################################################
 
@@ -1859,8 +1881,8 @@ tail = true
 [module/wired-network]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-;interface = enp0s20f0u4u3c2
-interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s20f0u4u3c2}
+;interface = enp0s31f6
+interface = ${env:POLYBAR_NETWORK_DEVICE:enp0s31f6}
 ;interface = enp14s0
 interval = 3.0
 
@@ -1893,8 +1915,7 @@ label-disconnected-background = ${colors.background}
 [module/wireless-network]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-# interface = wlp0s20f3
-interface = wlo1
+interface = wlp0s20f3
 interval = 3.0
 label-connected = %local_ip%
 
@@ -1934,6 +1955,8 @@ ramp-signal-foreground = #7e52c6
 [module/xbacklight]
 ;https://github.com/jaagr/polybar/wiki/Module:-xbacklight
 type = internal/xbacklight
+output = eDP-1
+enable-scroll = true
 format = <label> <bar>
 format-prefix = "   "
 format-prefix-foreground = ${colors.foreground}
