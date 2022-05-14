@@ -1166,7 +1166,7 @@ exec --no-startup-id sh -c "sleep 3 && /usr/bin/slack -u"
 # exec --no-startup-id "sh -c 'command -v whatsapp-nativefier-dark > /dev/null 2>&1 && whatsapp-nativefier-dark'"
 bindsym Ctrl+Mod1+l exec betterlockscreen -l --off 300
 bindsym Ctrl+Shift+l exec --no-startup-id ~/bin/toggle-xautolock.sh
-exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen -l --off 300'  #'blurlock' # 'i3lock -c 000000'
+# exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen -l --off 300'  #'blurlock' # 'i3lock -c 000000'
 
 #exec --no-startup-id /usr/bin/udiskie
 exec --no-startup-id /usr/bin/udiskie --tray
