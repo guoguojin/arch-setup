@@ -26,6 +26,7 @@ fi
 fpath+=~/.zfunc
 
 PATH=$PATH:$HOME/bin:$HOME/.local/bin:$PATH
+POLYBAR_NETWORK_DEVICE=$(ip link show | grep 'state UP' | awk '{print $2}' | sed 's/://' | grep -v ^wl | head -n 1)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -281,3 +282,4 @@ complete -o nospace -C /usr/bin/vault vault
 
 
 [[ -s "/home/tanq/.gvm/scripts/gvm" ]] && source "/home/tanq/.gvm/scripts/gvm"
+
