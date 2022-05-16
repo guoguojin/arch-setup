@@ -80,6 +80,7 @@ yay -S --noconfirm --needed oh-my-zsh-git
 
 backup_and_create $PWD/dotfiles/zsh/zshrc $HOME/.zshrc
 backup_and_create_dir $PWD/dotfiles/zsh/zsh_custom $HOME/.zsh_custom
+backup_and_create_dir $PWD/dotfiles/zsh/zfunc $HOME/.zfunc
 
 echo "Configuring Powerlevel10k Zsh theme"
 mkdir -p $HOME/.config/p10k
