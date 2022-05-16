@@ -15,6 +15,22 @@ if [ `tput colors` != "256" ]; then
 	ZSH_THEME="robbyrussell"
 fi
 
+exit () {
+	if [[ -z $TMUX ]]; then
+		builtin exit
+		return
+	fi
+
+	panes=$(tmux list-panes | wc -l)
+	wins=$(tmux list-windows | wc -l)
+	count=$(($panes + $wins -1))
+	if [ $count -eq 1 ]; then
+		tmux detach
+	else
+		builtin exit
+	fi
+}
+
 # eval `dircolors ~/code/personal/dircolors-solarized/dircolors.256dark`
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
@@ -23,7 +39,8 @@ fi
 
 [[ -r "$HOME/android/sdk" ]] && ANDROID_HOME=$HOME/android/sdk
 
-fpath+=~/.zfunc
+fpath=( ~/.zfunc "${fpath[@]}" )
+autoload -Uz exit
 
 PATH=$PATH:$HOME/bin:$HOME/.local/bin:$PATH
 POLYBAR_NETWORK_DEVICE=$(ip link show | grep 'state UP' | awk '{print $2}' | sed 's/://' | grep -v ^wl | head -n 1)
@@ -263,8 +280,6 @@ if ! zplug check --verbose; then
 
 # Then, source plugins and add commands to $PATH
 zplug load #--verbose
-
-
 
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 # zsh syntax highlighting

@@ -1,4 +1,4 @@
-exit() {
+exit () {
 	if [[ -z $TMUX ]]; then
 		builtin exit
 		return
