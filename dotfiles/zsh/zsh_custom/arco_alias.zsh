@@ -44,7 +44,7 @@ alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 #add new fonts
-alias fc='sudo fc-cache -fv'
+alias fcc='sudo fc-cache -fv'
 
 #quickly kill conkies
 alias kc='killall conky'

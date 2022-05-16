@@ -25,7 +25,7 @@ alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias fc='sudo fc-cache -fv'
+alias fcc='sudo fc-cache -fv'
 
 #get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
