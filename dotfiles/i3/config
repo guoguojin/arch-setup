@@ -1198,7 +1198,7 @@ exec --no-startup-id sleep 10; remmina -i
 #exec --no-startup-id "sleep 20 && autorandr -c 1080p && sleep 5 && autorandr -c 2K"
 
 bindsym $mod+Shift+s mode "$screens"
-set $screens Switch screen mode, 1 (main), 2 (right two), 3 (all), 4 (left two), or 5 (dp1 only)?
+set $screens Switch screen mode, 1 (main), 2 (right two), 3 (all), 4 (left two), 5 (dp1 only), p (portable)?
 
 mode "$screens" {
     bindsym 1 exec --no-startup-id autorandr -c default, mode default, restart
@@ -1206,6 +1206,7 @@ mode "$screens" {
     bindsym 3 exec --no-startup-id autorandr -c all-screens, mode default, restart
     bindsym 4 exec --no-startup-id autorandr -c left-two, mode default, restart
     bindsym 5 exec --no-startup-id autorandr -c dp1-only, mode default, restart
+    bindsym p exec --no-startup-id autorandr -c portable, mode default, restart
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
