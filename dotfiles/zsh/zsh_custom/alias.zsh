@@ -1,4 +1,4 @@
-alias ptar='XZ_OPT="-T6" tar'
+alias ptar='XZ_OPT="-T0" tar'
 alias reap='mosh tanq@reaper.birchwoodlangham.com -- /home/tanq/bin/tm'
 alias hellcat='mosh tanq@hellcat.birchwoodlangham.com -- /home/tanq/bin/tm'
 alias lps='lpass ls | grep -i'
