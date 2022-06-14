@@ -298,3 +298,4 @@ complete -o nospace -C /usr/bin/vault vault
 
 [[ -s "/home/tanq/.gvm/scripts/gvm" ]] && source "/home/tanq/.gvm/scripts/gvm"
 
+source /usr/share/nvm/init-nvm.sh

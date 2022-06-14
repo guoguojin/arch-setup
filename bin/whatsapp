@@ -1,9 +1,10 @@
 #! /usr/bin/env bash
 
-if [[ ! -z $(command -v whatsapp-nativefier-dark) ]];
-then
+if [[ ! -z $(command -v whatsapp-for-linux) ]]; then 
+    whatsapp-for-linux &
+elif [[ ! -z $(command -v whatsapp-nativefier-dark) ]]; then
 	whatsapp-nativefier-dark &
 else
-	whatsapp-nativefier &
+    whatsapp-nativefier &
 fi
 

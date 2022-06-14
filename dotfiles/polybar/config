@@ -40,8 +40,10 @@ format-offset =
 
 [colors]
 ; Nord theme ============
-background = #aa2F343F
-foreground = #f3f4f5
+;background = #aa2F343F
+;foreground = #f3f4f5
+background = #011627
+foreground = #d6deeb
 alert = #d08770
 volume-min = #a3be8c
 volume-med = #ebcb8b
@@ -1143,7 +1145,7 @@ bar-empty = ─
 [module/battery]
 ;https://github.com/jaagr/polybar/wiki/Module:-battery
 type = internal/battery
-battery = BAT1
+battery = BAT0
 adapter = AC0
 full-at = 100
 

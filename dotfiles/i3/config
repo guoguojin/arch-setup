@@ -219,7 +219,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Escape exec --no-startup-id arcolinux-logout
+bindsym $mod+Escape exec --no-startup-id archlinux-logout
 
 
 #####################################################################################################################
@@ -1198,7 +1198,7 @@ exec --no-startup-id sleep 10; remmina -i
 #exec --no-startup-id "sleep 20 && autorandr -c 1080p && sleep 5 && autorandr -c 2K"
 
 bindsym $mod+Shift+s mode "$screens"
-set $screens Switch screen mode, 1 (intel-undocked), 2 (intel-docked), 3 (nvidia-undocked), 4 (nvidia-docked), 5 (nvidia-docked-swap)?
+set $screens Switch screen mode, 1 (intel-undocked), 2 (intel-docked), 3 (nvidia-undocked), 4 (nvidia-docked), 5 (nvidia-docked-swap), s (spain-m7-intel), S (spain-m7-nvidia)?
 
 mode "$screens" {
     bindsym 1 exec --no-startup-id autorandr -c intel-undocked, mode default, restart
@@ -1206,6 +1206,8 @@ mode "$screens" {
     bindsym 3 exec --no-startup-id autorandr -c nvidia-undocked, mode default, restart
     bindsym 4 exec --no-startup-id autorandr -c nvidia-docked, mode default, restart
     bindsym 5 exec --no-startup-id autorandr -c nvidia-docked-swap, mode default, restart
+    bindsym s exec --no-startup-id autorandr -c spain-m7-intel, mode default, restart
+    bindsym S exec --no-startup-id autorandr -c spain-m7-nvidia, mode default, restart
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
