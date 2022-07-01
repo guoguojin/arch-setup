@@ -244,6 +244,7 @@ export GO111MODULE=auto
 
 source /usr/share/zsh/scripts/zplug/init.zsh
 
+zplug "zsh-users/zsh-autosuggestions"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sbt", from:oh-my-zsh
 zplug "plugins/scala", from:oh-my-zsh
@@ -295,7 +296,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
 
-
-[[ -s "/home/tanq/.gvm/scripts/gvm" ]] && source "/home/tanq/.gvm/scripts/gvm"
-
 source /usr/share/nvm/init-nvm.sh
+
+eval "$(direnv hook zsh)"

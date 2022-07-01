@@ -50,7 +50,7 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: none
-  opacity: 0.6
+  opacity: 0.8
 
   # Startup Mode (changes require restart)
   #

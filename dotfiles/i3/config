@@ -1039,9 +1039,9 @@ bindsym $mod+Control+k mode "$keyboard"
 set $keyboard Keyboard select mode. (u)s, (g)b
 
 mode "$keyboard" {
-    bindsym u exec setxkbmap -layout us, mode "default"
+    bindsym u exec setxkbmap -layout us -option caps:escape, mode "default"
     # bindsym Shift+u exec setxkbmap -layout us -variant intl, mode "default"
-    bindsym g exec setxkbmap -layout gb, mode "default"
+    bindsym g exec setxkbmap -layout gb -option caps:escape, mode "default"
     # bindsym Shift+g exec setxkbmap -layout gb -variant intl, mode "default"
 }
 
@@ -1213,3 +1213,4 @@ mode "$screens" {
     bindsym Escape mode "default"
 }
 
+bindsym Ctrl+Shift+k exec --no-startup-id kitty

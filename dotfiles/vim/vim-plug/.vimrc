@@ -483,6 +483,10 @@ function! s:build_go_files()
   endif
 endfunction
 
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+map <leader>a :cclose<CR>
+
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
@@ -517,13 +521,14 @@ augroup go
   au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
+  au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
   au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
   au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
 
   au FileType go nmap <leader>r  <Plug>(go-run)
   au FileType go nmap <leader>t  <Plug>(go-test)
-  au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
+  au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
   au FileType go nmap <Leader>i <Plug>(go-info)
   au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
   au FileType go nmap <C-g> :GoDecls<cr>
@@ -536,7 +541,7 @@ augroup END
 
 " ale
 :call extend(g:ale_linters, {
-    \"go": ['golint', 'go vet'], })
+    \"go": ['golangci-lint', 'go vet'], })
 
 
 " python
