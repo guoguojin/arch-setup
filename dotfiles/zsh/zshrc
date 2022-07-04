@@ -226,6 +226,7 @@ export GO111MODULE=auto
 
 source /usr/share/zsh/scripts/zplug/init.zsh
 
+zplug "zsh-users/zsh-autosuggestions"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sbt", from:oh-my-zsh
 zplug "plugins/scala", from:oh-my-zsh

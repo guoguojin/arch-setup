@@ -1201,13 +1201,12 @@ exec --no-startup-id sleep 10; remmina -i
 #exec --no-startup-id "sleep 20 && autorandr -c 1080p && sleep 5 && autorandr -c 2K"
 
 bindsym $mod+Shift+s mode "$screens"
-set $screens Switch screen mode, 1 (undocked), 2 (docked-2-1), 3 (horizontal), 4 (vertical)?
+set $screens Switch screen mode, 1 (undocked), 2 (docked-2-1), s (spain-m7)?
 
 mode "$screens" {
     bindsym 1 exec --no-startup-id autorandr -c undocked, mode default, restart
     bindsym 2 exec --no-startup-id autorandr -c docked-2-1, mode default, restart
-    bindsym 3 exec --no-startup-id autorandr -c spain-external-horizontal, mode default, restart
-    bindsym 4 exec --no-startup-id autorandr -c spain-external-vertical, mode default, restart
+    bindsym s exec --no-startup-id autorandr -c spain-m7, mode default, restart
     
 
     bindsym Return mode "default"
